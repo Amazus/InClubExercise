@@ -13,6 +13,7 @@ public class CubeController : MonoBehaviour
     void Start()
     {
         GetComponent<MeshRenderer>().material.color = Color.white;
+        GetComponentInChildren<ParticleSystem>().Stop(true);
     }
 
     // Update is called once per frame
@@ -33,10 +34,12 @@ public class CubeController : MonoBehaviour
         if (isAngry)
         {
             GetComponent<MeshRenderer>().material.color = Color.red;
+            GetComponentInChildren<ParticleSystem>().Play(true);
         }
         else
         {
             GetComponent<MeshRenderer>().material.color = Color.white;
+            GetComponentInChildren<ParticleSystem>().Stop(true);
         }
     }
 }
