@@ -11,13 +11,13 @@ public class WeightedBoolean
         this.odds = Mathf.Clamp01(odds);
     }
 
-    public static WeightedBoolean NOT(WeightedBoolean a) => new(1 - a.odds);
+    public static WeightedBoolean NOT(WeightedBoolean a) => new WeightedBoolean(1 - a.odds);
 
     public static WeightedBoolean OR(params WeightedBoolean[] values)
     {
         float odds = 0;
         foreach (var v in values) odds = Mathf.Max(odds, v.odds);
-        return new(odds);
+        return new WeightedBoolean(odds);
     }
 
     public static implicit operator bool(WeightedBoolean m) => m.odds > 0.5;
